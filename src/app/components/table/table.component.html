@@ -4,13 +4,8 @@
   <ng-container *ngFor="let columnName of columnList" [matColumnDef]="columnName.name">
     <th mat-header-cell *matHeaderCellDef>
       <div>
-        <!-- <mat-checkbox [(checked)]="selectedItemsList[columnName]">
-        </mat-checkbox> -->
-        <span>{{columnName.name | uppercase}}</span>
+        <h6>{{columnName.name | uppercase}}</h6>
 
-        <!-- {{columnName|json}} -->
-
-        <!-- <mat-select (selectionChange)="onSelectionChange($event.value, columnName)" [value]="'Nombres'"> -->
         <mat-select (selectionChange)="onSelectionChange($event, columnName)" [(value)]="columnName.columnKey">
           <mat-option *ngFor="let field of listFields" [(value)]="field.key">
             {{field.name}}

@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { UploadFileService } from 'src/app/services/upload-file.service';
+import { FieldShow } from 'src/app/model/FieldEntity';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -9,14 +11,14 @@ import { UploadFileService } from 'src/app/services/upload-file.service';
 })
 export class TableComponent {
 
-  constructor(private uploadFileService: UploadFileService) { }
+  constructor(private uploadFileService: UploadFileService, private _snackBar: MatSnackBar) { }
 
   _dataSource: any[];
   columnList: any[];
   displayedColumns: string[] = [];
 
-  listFields = [
-    { name: 'Nombres', key: 'firstName', columnName: null },
+  listFields: FieldShow[] = [
+    { name: 'Nombres', key: 'firstName' },
     { name: 'Apellidos', key: 'lastName' },
     { name: 'Teléfonos', key: 'tel' },
     { name: 'Direcciones', key: 'address' }
@@ -26,54 +28,37 @@ export class TableComponent {
     this._dataSource = dataSource;
     this.getColumns()
   }
+
   get dataSource(): any[] {
     // console.log('Get', this._dataSource)
     return this._dataSource;
   }
 
   onSelectionChange(valueSelected, column) {
-
-    // this.listFields = this.listFields.map(el => {
-    //   if (el.columnName === columnName) {
-    //     return { name: el.name }
-    //   }
-    //   return el
-    // })
-
-    // this.columnList[0].columnKey = 'tel'
-
-    // setTimeout(() => {
-    //   this.columnList = this.columnList.map(item => {
-    //     return { ...item, columnKey: 'tel' }
-    //   })
-
-    //   console.log(this.columnList);
-    // }, 1000);
-
-
-
-
-    // console.log(columnName);
-
-
-
-
-    // this.listFields = this.listFields.map(el => {
-    //   if (el.name === valueSelected) {
-    //     return { ...el, columnName }
-    //   }
-    //   return el
-    // })
-    // console.log(this.listFields);
   }
 
+  /**
+   * Extrae columnas necesarias para pintar tabla
+   */
   getColumns() {
     this.columnList = Object.keys(this._dataSource[0]).map(el => { return { name: el } })
-
     this.displayedColumns = Object.keys(this._dataSource[0])
   }
 
+  /**
+   * Normaliza arreglo con la estructura para guardar en base de datos
+   */
   exportList() {
+
+    const itemFind = this.columnList.find(item => item.columnKey)
+    if (!itemFind) {
+      this._snackBar.open('Debes seleccionar al menos una columa', 'alerta', {
+        duration: 5000,
+      });
+      return
+    }
+
+
 
     const dataSourceAddCol = this._dataSource.map(item => {
       let dataModified = {}

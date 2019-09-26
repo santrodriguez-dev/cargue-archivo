@@ -1,0 +1,17 @@
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
+prodructo1,telefono1,descripcion1,direccion1
