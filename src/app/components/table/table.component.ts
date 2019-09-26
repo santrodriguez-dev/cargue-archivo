@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { UploadFileService } from 'src/app/services/upload-file.service';
+
 
 @Component({
   selector: 'app-table',
@@ -6,6 +8,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
+
+  constructor(private se: UploadFileService) { }
 
   _dataSource: any[];
   columnList: any[];
