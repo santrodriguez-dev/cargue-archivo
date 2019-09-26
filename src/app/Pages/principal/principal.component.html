@@ -12,8 +12,8 @@
     </div>
 
     <div *ngIf="arrayListFile && arrayListFile.length>0" class="TableContainer">
-      <h3>Productos</h3>
-      <app-table [dataSource]="arrayListFile"></app-table>
+      <h3 class="title-list">Productos</h3>
+      <app-table [dataSource]="arrayListFile" (resetFile)="resetFile()"></app-table>
     </div>
 
 

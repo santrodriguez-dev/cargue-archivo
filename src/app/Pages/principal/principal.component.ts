@@ -8,7 +8,7 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 })
 export class PrincipalComponent implements OnInit {
 
-  arrayListFile =[]
+  arrayListFile = []
   separator = ','
 
   constructor(public dialog: MatDialog) { }
@@ -58,6 +58,11 @@ export class PrincipalComponent implements OnInit {
     this.arrayListFile = arrayList;
 
   }
+
+  resetFile() {
+    this.arrayListFile = []
+  }
+
 }
 
 @Component({

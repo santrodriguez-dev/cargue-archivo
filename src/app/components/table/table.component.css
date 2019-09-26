@@ -1,3 +1,10 @@
-.MatTable{
-    width: 100%;
+.MatTable {
+  width: 100%;
+}
+
+.title-list {
+  background-color: #53bbb5;
+  color: white;
+  margin: 0;
+  padding: 10px 0 10px 5px;
 }

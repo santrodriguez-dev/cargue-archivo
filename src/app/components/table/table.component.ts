@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { UploadFileService } from 'src/app/services/upload-file.service';
 import { FieldShow } from 'src/app/model/FieldEntity';
 import { MatSnackBar } from '@angular/material';
@@ -16,6 +16,7 @@ export class TableComponent {
   _dataSource: any[];
   columnList: any[];
   displayedColumns: string[] = [];
+  @Output() resetFile = new EventEmitter();
 
   listFields: FieldShow[] = [
     { name: 'Nombres', key: 'firstName' },
@@ -70,7 +71,16 @@ export class TableComponent {
     })
 
     this.uploadFileService.updateData(dataSourceAddCol).subscribe(data => {
-      console.log(data);
+      if (!data) {
+        this._snackBar.open('No se ha podido almacenar la información', 'error', {
+          duration: 5000,
+        });
+        return
+      }
+      this._snackBar.open('La información se ha guardado exitosamente', 'alerta', {
+        duration: 5000,
+      });
+      this.resetFile.emit()
     });
   }
 

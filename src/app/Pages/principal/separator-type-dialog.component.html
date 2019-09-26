@@ -1,14 +1,14 @@
 <mat-form-field>
-    <mat-label>Selecciona un separador</mat-label>
-    <mat-select [(value)]="typeSeparator">
-        <mat-option [value]="','">, (coma)</mat-option>
-        <mat-option [value]="'.'">. (punto)</mat-option>
-        <mat-option [value]="'%'">% (porcentaje)</mat-option>
-        <mat-option [value]="'other'">Otro</mat-option>
-    </mat-select>
+  <mat-label>Selecciona un separador</mat-label>
+  <mat-select [(value)]="typeSeparator">
+    <mat-option [value]="','">, (coma)</mat-option>
+    <mat-option [value]="'.'">. (punto)</mat-option>
+    <mat-option [value]="'%'">% (porcentaje)</mat-option>
+    <mat-option [value]="'other'">Otro</mat-option>
+  </mat-select>
 </mat-form-field>
 <mat-form-field *ngIf="typeSeparator==='other'">
-    <input matInput placeholder="Especifica un separador" [value]="otherValue">
+  <input matInput placeholder="Especifica un separador" [value]="otherValue">
 </mat-form-field>
 
-<button mat-button color="primary" (click)="onConfirm()">Confirmar</button>
+<button mat-raised-button color="primary" (click)="onConfirm()">Confirmar</button>
