@@ -9,7 +9,7 @@ import { UploadFileService } from 'src/app/services/upload-file.service';
 })
 export class TableComponent {
 
-  constructor(private se: UploadFileService) { }
+  constructor(private uploadFileService: UploadFileService) { }
 
   _dataSource: any[];
   columnList: any[];
@@ -84,7 +84,9 @@ export class TableComponent {
       return dataModified
     })
 
-    console.log(dataSourceAddCol);
+    this.uploadFileService.updateData(dataSourceAddCol).subscribe(data => {
+      console.log(data);
+    });
   }
 
 }

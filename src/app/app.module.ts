@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { PrincipalComponent } from './Pages/principal/principal.component';
 import { TableComponent } from './components/table/table.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +18,7 @@ import { TableComponent } from './components/table/table.component';
     TableComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

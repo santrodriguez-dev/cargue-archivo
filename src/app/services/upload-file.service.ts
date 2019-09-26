@@ -17,6 +17,8 @@ export class UploadFileService {
    * Obtiene lista de todas las empresas
    */
   updateData(data) {
+    console.log(data);
+    return
     return this.http.get<any>(`${this.url}Company/GetAll`)
       .pipe().pipe(take(1));
   }
