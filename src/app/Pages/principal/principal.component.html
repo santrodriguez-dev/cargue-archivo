@@ -1,0 +1,23 @@
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-12">
+      <input type="file" class="custom-file-input" id="customFileLangHTML" (change)="fileChanged($event)">
+      <label class="custom-file-label" for="customFileLangHTML" data-browse="Buscar">Seleccione el archivo</label>
+    </div>
+
+    <div *ngIf="arrayListFile && arrayListFile.length>0" class="TableContainer">
+      <h3>Productos</h3>
+      <app-table [dataSource]="arrayListFile"></app-table>
+    </div>
+    <!-- <div *ngIf="listProvince.length > 0" class="TableContainer">
+      <h3> -- Provincias</h3>
+      <app-table [dataSource]="listProvince"></app-table>
+    </div>
+    <div *ngIf="listDistrict.length > 0" class="TableContainer">
+      <h3> -- Distritos</h3>
+      <app-table [dataSource]="listDistrict"></app-table>
+    </div> -->
+  </div>
+</div>
