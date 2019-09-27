@@ -41,7 +41,7 @@
     <mat-icon>cloud_upload</mat-icon>
   </button>
   &nbsp;
-  <button mat-raised-button color="warn" (click)="onCancel.emit()">
+  <button mat-raised-button color="warn" *ngIf="!isLoading" (click)="onCancel.emit()">
     Cancelar
   </button>
 </div>
