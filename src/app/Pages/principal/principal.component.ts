@@ -11,7 +11,8 @@ export class PrincipalComponent implements OnInit {
 
   arrayListFile = []
   separator = ','
-  campaignName=''
+  campaignName = ''
+  campaignSaved = null;
 
   constructor(public dialog: MatDialog) { }
 
@@ -61,7 +62,15 @@ export class PrincipalComponent implements OnInit {
 
   }
 
-  resetFile() {
+  resetFile(data) {
+    if (!data) return
+
+    this.campaignSaved = data.campaignSaved
+    // this.arrayListFile = []
+  }
+
+  onOtherFile() {
+    this.campaignSaved = null
     this.arrayListFile = []
   }
 
@@ -75,8 +84,6 @@ export class PrincipalComponent implements OnInit {
 export class SeparatorTypeDialog {
 
   separatorForm: FormGroup;
-  typeSeparator: string
-  otherValue = 'jjj'
 
   constructor(
     public dialogRef: MatDialogRef<SeparatorTypeDialog>,

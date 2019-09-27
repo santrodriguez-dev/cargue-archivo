@@ -31,11 +31,17 @@
 </table>
 
 <br>
-<button mat-raised-button color="primary" (click)="exportList()" *ngIf="!isLoading">
-  Guardar
-  <mat-icon>cloud_upload</mat-icon>
-</button>
-<button mat-raised-button color="primary" *ngIf="isLoading" [disabled]="true">
-  cargando...
-  <mat-icon>cloud_upload</mat-icon>
-</button>
+<div *ngIf=showbuttonSave>
+  <button mat-raised-button color="primary" (click)="exportList()" *ngIf="!isLoading">
+    Guardar
+    <mat-icon>cloud_upload</mat-icon>
+  </button>
+  <button mat-raised-button color="primary" *ngIf="isLoading" [disabled]="true">
+    cargando...
+    <mat-icon>cloud_upload</mat-icon>
+  </button>
+  &nbsp;
+  <button mat-raised-button color="warn" (click)="onCancel.emit()">
+    Cancelar
+  </button>
+</div>

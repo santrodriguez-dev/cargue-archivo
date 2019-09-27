@@ -2,7 +2,7 @@
 
   <div class="row">
 
-    <div class="col-md-12">
+    <div class="col-md-12" *ngIf="!campaignSaved">
       <input type="file" class="custom-file-input" id="customFileLangHTML" (change)="fileChanged($event)">
       <label class="custom-file-label" for="customFileLangHTML" data-browse="Buscar">Seleccione el archivo</label>
     </div>
@@ -13,7 +13,22 @@
 
     <div *ngIf="arrayListFile && arrayListFile.length>0" class="TableContainer">
       <h3 class="title-list">Productos</h3>
-      <app-table [dataSource]="arrayListFile" (resetFile)="resetFile()"></app-table>
+      <app-table [dataSource]="arrayListFile" [showbuttonSave]="!campaignSaved" (resetFile)="resetFile($event)"
+        (onCancel)="onOtherFile()">
+      </app-table>
+    </div>
+
+    <div class="alert alert-success w-100" role="alert" *ngIf="campaignSaved">
+      <h4 class="alert-heading">La campaña se ha guardado existosamente!</h4>
+      <div>Código de campaña: {{campaignSaved.id}}</div>
+      <div>Nombre de campaña: {{campaignSaved.name}}</div>
+      <div>Fecha de creación de campaña: {{campaignSaved.date | date}}</div>
+      <hr>
+
+      <button mat-raised-button color="primary" (click)="onOtherFile()">
+        Cargar mas productos
+      </button>
+      <!-- <p class="mb-0">La campaña se ha guardado existosamente</p> -->
     </div>
 
 

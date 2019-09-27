@@ -19,6 +19,8 @@ export class TableComponent {
   isLoading = false;
   displayedColumns: string[] = [];
   @Output() resetFile = new EventEmitter();
+  @Output() onCancel = new EventEmitter();
+  @Input() showbuttonSave: boolean
 
   listFields: FieldShow[] = [
     { name: 'Nombres', key: 'firstName' },
@@ -58,10 +60,7 @@ export class TableComponent {
       return { ...item, columnKey: this.listFields[i].key }
     });
     console.log(this.columnList);
-
-
   }
-
   /**
    * Normaliza arreglo con la estructura para guardar en base de datos
    */
@@ -89,16 +88,16 @@ export class TableComponent {
     //Envio de datos al servicio
     this.isLoading = true
     this.uploadFileService.updateData(dataSourceAddCol, 'campaignName')
-    .pipe(catchError(err => {
-      this.isLoading = false
-      console.error(err.error);
-      this._snackBar.open(err.error, 'error', {
-        duration: 5000,
-      });
-      return err
-    }))
-    .subscribe(data => {
-      this.isLoading = false
+      .pipe(catchError(err => {
+        this.isLoading = false
+        console.error(err.error);
+        this._snackBar.open(err.error, 'error', {
+          duration: 5000,
+        });
+        return err
+      }))
+      .subscribe(data => {
+        this.isLoading = false
         if (!data) {
           this._snackBar.open('No se ha podido almacenar la información', 'error', {
             duration: 5000,
@@ -108,7 +107,7 @@ export class TableComponent {
         this._snackBar.open('La información se ha guardado exitosamente', 'Exito', {
           duration: 5000,
         });
-        this.resetFile.emit()
+        this.resetFile.emit(data)
       });
   }
 
