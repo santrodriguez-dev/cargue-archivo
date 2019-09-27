@@ -1,14 +1,18 @@
-<mat-form-field>
-  <mat-label>Selecciona un separador</mat-label>
-  <mat-select [(value)]="typeSeparator">
-    <mat-option [value]="','">, (coma)</mat-option>
-    <mat-option [value]="'.'">. (punto)</mat-option>
-    <mat-option [value]="'%'">% (porcentaje)</mat-option>
-    <mat-option [value]="'other'">Otro</mat-option>
-  </mat-select>
-</mat-form-field>
-<mat-form-field *ngIf="typeSeparator==='other'">
-  <input matInput placeholder="Especifica un separador" [value]="otherValue">
-</mat-form-field>
+<form [formGroup]="separatorForm" (ngSubmit)="onConfirm()" class="modal-form">
 
-<button mat-raised-button color="primary" (click)="onConfirm()">Confirmar</button>
+  <h4>Separador de lineas de archivo</h4>
+
+  <mat-form-field>
+    <mat-label>Selecciona un separador</mat-label>
+    <mat-select formControlName="typeSeparator">
+      <mat-option [value]="','">, (coma)</mat-option>
+      <mat-option [value]="'.'">. (punto)</mat-option>
+      <mat-option [value]="'%'">% (porcentaje)</mat-option>
+      <mat-option [value]="'other'">Otro</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="separatorForm.value.typeSeparator==='other'">
+    <input matInput placeholder="Especifica un separador" formControlName="otherValue" />
+  </mat-form-field>
+  <button mat-raised-button color="primary">Confirmar</button>
+</form>

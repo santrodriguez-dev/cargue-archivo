@@ -5,3 +5,9 @@
   margin-bottom: 10px;
   margin-top: 20px;
 }
+
+
+.modal-form{
+  display: flex;
+  flex-direction: column;
+}
