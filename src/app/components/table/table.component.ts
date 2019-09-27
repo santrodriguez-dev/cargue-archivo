@@ -87,7 +87,7 @@ export class TableComponent {
 
     //Envio de datos al servicio
     this.isLoading = true
-    this.uploadFileService.updateData(dataSourceAddCol, 'campaignName')
+    this.uploadFileService.updateData(dataSourceAddCol, 'Nueva Campaña')
       .pipe(catchError(err => {
         this.isLoading = false
         console.error(err.error);
