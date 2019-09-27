@@ -11,6 +11,7 @@ export class PrincipalComponent implements OnInit {
 
   arrayListFile = []
   separator = ','
+  campaignName=''
 
   constructor(public dialog: MatDialog) { }
 
@@ -46,9 +47,9 @@ export class PrincipalComponent implements OnInit {
 
     //recorrido de lineas
     stringArray.forEach((line, i) => {
+      if (line.trim() === '') return //discriminar lineas vacías
       //separar linea por caracter especificado
       const lineArray = line.split(this.separator)
-      // if (lineArray.length <= 1) return //discriminar lineas vacías
       let file: any = {}
       lineArray.forEach((element, i) => {
         file = { ...file, ['columna' + i]: element } //creacion de objeto por linea
