@@ -6,24 +6,25 @@
   </ng-container>
 
   <!-- Column -->
-  <ng-container *ngFor="let columnName of columnList;let i = index" [matColumnDef]="columnName.name">
+  <ng-container *ngFor="let column of columnList;let i = index" [matColumnDef]="column.name">
     <th mat-header-cell *matHeaderCellDef>
-      <div class="cell-header-table" [ngStyle]="{'background': columnName.columnKey?'#00ce0061':''}">
-        <!-- {{columnName|json}} -->
-        <h6 *ngIf="!columnName.columnKey">{{'Columna '+(i+1)}}</h6>
+      <div class="cell-header-table" [ngStyle]="{'background': column.columnKey?'#00ce0061':''}">
+        <!-- {{column|json}} -->
+        <h6 *ngIf="!column.columnKey">{{'Columna '+(i+1)}}</h6>
         <mat-form-field>
-          <mat-label>Seleccionar</mat-label>
-          <mat-select (selectionChange)="onSelectionChange($event, columnName)" [(value)]="columnName.columnKey">
+          <input matInput placeholder="Nombre de columna" [(ngModel)]="column.columnKey"/>
+          <!-- <mat-label>Seleccionar</mat-label>
+          <mat-select (selectionChange)="onSelectionChange($event, column)" [(value)]="column.columnKey">
             <mat-option>--Ninguno--</mat-option>
             <mat-option *ngFor="let field of listFields" [(value)]="field.key">
               {{field.name}}
             </mat-option>
-          </mat-select>
+          </mat-select> -->
         </mat-form-field>
 
       </div>
     </th>
-    <td mat-cell *matCellDef="let element"> {{element[columnName.name]}} </td>
+    <td mat-cell *matCellDef="let element"> {{element[column.name]}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

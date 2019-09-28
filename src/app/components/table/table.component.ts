@@ -55,10 +55,10 @@ export class TableComponent {
 
 
     //Asignacion inicial por defecto
-    this.columnList = this.columnList.map((item, i) => {
-      if (!this.listFields[i]) return item
-      return { ...item, columnKey: this.listFields[i].key }
-    });
+    // this.columnList = this.columnList.map((item, i) => {
+    //   if (!this.listFields[i]) return item
+    //   return { ...item, columnKey: this.listFields[i].key }
+    // });
     console.log(this.columnList);
   }
   /**
@@ -75,15 +75,28 @@ export class TableComponent {
       return
     }
 
+    let isFieldEmpty = ''
+
     //Transformacion de listado con claves especificadas
-    const dataSourceAddCol = this._dataSource.map(item => {
+    const dataSourceAddCol = this._dataSource.map((item, i) => {
       let dataModified = {}
       this.columnList.map(field => {
         if (!field.columnKey) return
+        if (!item[field.name]) {
+          isFieldEmpty = `el campo numero ${i + 1} de la columna ${field.columnKey} se encuentra vacío`;
+        }
         dataModified = { ...dataModified, [field.columnKey]: item[field.name] }
       })
       return dataModified
     })
+
+    if (isFieldEmpty) {
+      alert(isFieldEmpty)
+      return
+    }
+
+    console.log(dataSourceAddCol);
+    // return
 
     //Envio de datos al servicio
     this.isLoading = true
